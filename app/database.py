@@ -248,7 +248,9 @@ class Database:
         conn.commit()
         conn.close()
         
+        deleted = cursor.rowcount > 0
         logger.info(f"Deleted job {job_id}")
+        return deleted
     
     def get_processing_jobs(self) -> List[Dict]:
         """

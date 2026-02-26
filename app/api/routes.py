@@ -191,7 +191,7 @@ def _register_routes(app: FastAPI):
             "job_id": job_id,
             "status": job['status'],
             "created_at": job['created_at'],
-            "updated_at": job['updated_at'],
+            "updated_at": job.get('updated_at', job['created_at']),
             "original_filename": job['original_filename']
         }
         
