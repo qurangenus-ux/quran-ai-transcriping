@@ -83,13 +83,13 @@ dev-frontend: install-frontend ## Start frontend dev server with hot-reload
 	@echo ""
 	@cd frontend && npm run dev
 
-test: ## Run tests (placeholder - add tests in future)
+test: ## Run the test suite
 	@echo "$(YELLOW)Running tests...$(NC)"
-	@if [ ! -d "venv" ]; then \
-		echo "$(RED)Virtual environment not found. Run 'make setup' first.$(NC)"; \
-		exit 1; \
+	@if [ -d "venv" ]; then \
+		. venv/bin/activate && python -m pytest tests/ -v; \
+	else \
+		python3 -m pytest tests/ -v; \
 	fi
-	@. venv/bin/activate && python -m pytest tests/ -v || echo "$(YELLOW)No tests found. Add tests in tests/ directory.$(NC)"
 
 clean: ## Clean up temporary files and cache
 	@echo "$(GREEN)Cleaning up...$(NC)"

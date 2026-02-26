@@ -240,7 +240,7 @@ class JobQueue:
             True if job is completed, False otherwise
         """
         status = self.get_job_status(job_id)
-        return status == JobStatus.COMPLETED.value if status else False
+        return status == JobStatus.COMPLETED if status else False
     
     def is_job_failed(self, job_id: str) -> bool:
         """
@@ -253,7 +253,7 @@ class JobQueue:
             True if job failed, False otherwise
         """
         status = self.get_job_status(job_id)
-        return status == JobStatus.FAILED.value if status else False
+        return status == JobStatus.FAILED if status else False
     
     def is_job_processing(self, job_id: str) -> bool:
         """
@@ -266,7 +266,7 @@ class JobQueue:
             True if job is processing, False otherwise
         """
         status = self.get_job_status(job_id)
-        return status == JobStatus.PROCESSING.value if status else False
+        return status == JobStatus.PROCESSING if status else False
     
     def get_queue_size(self) -> int:
         """
